@@ -118,7 +118,7 @@ export function Hero() {
             <motion.span
               aria-hidden
               className="block h-8 w-px bg-foreground/40 origin-top"
-              animate={reduced ? undefined : { scaleY: [0.2, 1, 0.2] }}
+              animate={reduced ? { scaleY: 1 } : { scaleY: [0.2, 1, 0.2] }}
               transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
