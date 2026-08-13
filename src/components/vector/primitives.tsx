@@ -73,7 +73,7 @@ export function StaggerWords({
               variants={wordVariants}
               initial="hidden"
               whileInView="show"
-              viewport={{ once, margin: "-10% 0px -10% 0px" }}
+              viewport={{ once, amount: 0.1 }}
             >
               {word}
             </motion.span>
