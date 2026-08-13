@@ -40,15 +40,13 @@ export function MotionSection() {
             />
           </motion.div>
 
-          <motion.div
-            style={{ x: reduced ? 0 : typeX }}
-            className="pointer-events-none z-10 md:absolute md:inset-y-0 md:left-[34%] md:col-span-12 md:flex md:w-max md:items-center"
-          >
+          <div className="pointer-events-none z-10 md:absolute md:inset-y-0 md:left-[34%] md:flex md:w-max md:items-center">
             <StaggerWords
               words={["RUN", "LIVE", "REPEAT"]}
-              className="display text-bone mix-blend-difference text-[20vw] leading-[0.8] md:text-[10vw]"
+              className="display text-bone text-[20vw] leading-[0.8] md:text-[10vw]"
+              lineClassName="mix-blend-difference"
             />
-          </motion.div>
+          </div>
 
           <Reveal delay={0.1} className="md:col-span-3 md:col-start-10 md:self-end md:pb-16">
             <p className="text-sm leading-relaxed">
