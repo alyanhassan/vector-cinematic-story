@@ -141,13 +141,13 @@
 }
 
 @utility outline-type {
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 1.5px currentColor;
 }
 
 @utility outline-type-thick {
-  color: transparent;
-  -webkit-text-stroke: 2.5px currentColor;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 3px currentColor;
 }
 
 /* ---------- Hero lighting (CSS generated) ---------- */
