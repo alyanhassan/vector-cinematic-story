@@ -63,7 +63,7 @@ export function StaggerWords({
   return (
     <div className={className}>
       {words.map((word, i) => (
-        <span key={word + i} className="block overflow-hidden">
+        <span key={word + i} className="block w-max max-w-none overflow-hidden whitespace-nowrap">
           {reduced ? (
             <span className={cn("block", lineClassName)}>{word}</span>
           ) : (
