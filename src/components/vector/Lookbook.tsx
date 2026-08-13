@@ -31,10 +31,10 @@ function Frame({
       <div className="absolute inset-0 bg-black/0 transition-colors duration-700 group-hover:bg-black/20" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/70 to-transparent" />
       <figcaption className="absolute inset-x-0 bottom-0 flex items-end justify-between p-4">
-        <span className="label-tech text-white opacity-100 transition-transform duration-700 group-hover:translate-x-2">
+        <span className="label-tech text-bone opacity-100 transition-transform duration-700 group-hover:translate-x-2">
           {index} / {title}
         </span>
-        <span className="label-tech text-white opacity-0 transition-opacity duration-700 group-hover:opacity-90">
+        <span className="label-tech text-bone opacity-0 transition-opacity duration-700 group-hover:opacity-90">
           VIEW
         </span>
       </figcaption>
