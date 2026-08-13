@@ -39,11 +39,11 @@ export function MotionSection() {
             />
           </motion.div>
 
-          <div className="pointer-events-none z-10 md:absolute md:inset-y-0 md:left-[34%] md:flex md:w-max md:items-center">
+          <div className="pointer-events-none z-10 md:absolute md:inset-y-0 md:left-[13%] md:flex md:w-max md:items-center">
             <StaggerWords
               words={["RUN", "LIVE", "REPEAT"]}
-              className="display text-bone text-[20vw] leading-[0.8] md:text-[10vw]"
-              lineClassName="mix-blend-difference"
+              className="display text-bone text-[20vw] leading-[0.8] md:text-[8.5vw]"
+              lineClassName="drop-shadow-[0_2px_24px_rgba(0,0,0,0.45)]"
             />
           </div>
 
