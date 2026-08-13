@@ -12,7 +12,6 @@ export function MotionSection() {
     offset: ["start end", "end start"],
   });
   const imgY = useTransform(scrollYProgress, [0, 1], ["8%", "-8%"]);
-  const typeX = useTransform(scrollYProgress, [0, 1], ["-4%", "4%"]);
 
   return (
     <section
