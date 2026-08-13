@@ -46,12 +46,14 @@ export function Material() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-20%" }}
             transition={{ delay: 0.2 + i * 0.15, duration: 0.9 }}
-            className="absolute flex items-center gap-3"
+            className="absolute flex items-center gap-3 text-foreground"
             style={{ top: z.top, left: z.left }}
           >
             <span className="block h-1.5 w-1.5 rounded-full bg-foreground" />
-            <span className="block h-px bg-foreground/60" style={{ width: z.w }} />
-            <TechLabel className="opacity-100">{z.label}</TechLabel>
+            <span className="block h-px bg-foreground/70" style={{ width: z.w }} />
+            <TechLabel className="whitespace-nowrap bg-background/70 px-2 py-1 opacity-100 backdrop-blur-sm">
+              {z.label}
+            </TechLabel>
           </motion.div>
         ))}
       </div>
