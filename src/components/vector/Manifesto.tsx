@@ -1,6 +1,7 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 
+import { COPY, sectionLabel } from "./content";
 import { Reveal, StaggerWords, TechLabel } from "./primitives";
 
 export function Manifesto() {
@@ -16,7 +17,8 @@ export function Manifesto() {
   return (
     <section
       ref={ref}
-      id="manifesto"
+      id="idea"
+      aria-labelledby="idea-title"
       className="relative overflow-hidden bg-background py-28 md:py-48"
     >
       <motion.span
@@ -29,32 +31,28 @@ export function Manifesto() {
 
       <div className="relative mx-auto max-w-[1800px] px-5 md:px-10">
         <Reveal className="mb-10 flex items-center gap-4">
-          <TechLabel>INDEX 01 — MANIFESTO</TechLabel>
+          <TechLabel>{sectionLabel("idea")}</TechLabel>
           <span className="hairline-x flex-1" />
         </Reveal>
 
         <motion.div style={{ x: reduced ? 0 : drift }}>
+          <h2 id="idea-title" className="sr-only">
+            {COPY.idea.headline.join(" ")}
+          </h2>
           <StaggerWords
-            words={["NOT MADE", "TO BLEND", "IN."]}
-            className="display text-[15vw] leading-[0.84] md:text-[11vw]"
+            words={[...COPY.idea.headline]}
+            className="display text-[15vw] leading-[0.86] md:text-[11vw]"
           />
         </motion.div>
 
         <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12">
           <Reveal delay={0.05} className="md:col-span-4 md:col-start-6">
-            <p className="text-base leading-relaxed md:text-lg">
-              VECTOR is built for the hours the city never accounts for. Every
-              silhouette begins as a study in movement — mass shifted forward,
-              volume sculpted away, structure kept only where the body demands it.
-            </p>
+            <p className="text-base leading-relaxed md:text-lg">{COPY.idea.lead}</p>
           </Reveal>
           <Reveal delay={0.15} className="md:col-span-3 md:col-start-10">
-            <p className="text-sm leading-relaxed text-muted-foreground">
-              Engineered form, street intent. We treat performance as material
-              language and the street as the only testing ground that matters.
-            </p>
+            <p className="text-sm leading-relaxed text-muted-foreground">{COPY.idea.body}</p>
             <div className="hairline-x my-6" />
-            <TechLabel>ENGINEERED FOR MOTION</TechLabel>
+            <TechLabel>{COPY.idea.note}</TechLabel>
           </Reveal>
         </div>
       </div>
