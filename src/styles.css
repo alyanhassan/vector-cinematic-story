@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * VECTOR / 01 — editorial design system.
+ * OVERPASS / 01 — editorial design system.
  * Bone (#F3F0E8) + near-black (#0B0B0B), restrained cobalt & acid accents.
  * All colors in oklch. Never hardcode colors in components.
  */
@@ -44,6 +44,7 @@
   --color-cobalt: var(--cobalt);
   --color-acid: var(--acid);
   --color-ash: var(--ash);
+  --color-gold: var(--gold);
 
   --font-display: "Anton", "Arial Narrow", sans-serif;
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
@@ -56,7 +57,8 @@
   --ink: oklch(0.16 0.002 264);
   --cobalt: oklch(0.52 0.19 264);
   --acid: oklch(0.9 0.19 108);
-  --ash: oklch(0.62 0.005 90);
+  --ash: oklch(0.48 0.006 90);
+  --gold: oklch(0.78 0.12 85);
 
   --background: var(--bone);
   --foreground: var(--ink);
@@ -105,7 +107,6 @@
   }
 
   html {
-    scroll-behavior: smooth;
     -webkit-font-smoothing: antialiased;
   }
 
@@ -114,6 +115,15 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
+  }
+
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  :focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
   }
 
   ::selection {
@@ -217,7 +227,76 @@
   opacity: 0.18;
 }
 
+/* ---------- Lenis ---------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* ---------- Footer ---------- */
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: ticker 40s linear infinite;
+}
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+.wordmark-light {
+  background: radial-gradient(
+      28% 60% at var(--lp, 50% 50%),
+      var(--gold) 0%,
+      transparent 70%
+    ),
+    var(--bone);
+  background-attachment: fixed;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@property --lp {
+  syntax: "*";
+  inherits: true;
+}
+@keyframes drift {
+  0% {
+    --lp: 0% 50%;
+  }
+  100% {
+    --lp: 100% 50%;
+  }
+}
+@property --lpx {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 0%;
+}
+.wordmark-drift {
+  animation: lpx 9s ease-in-out infinite alternate;
+  --lp: var(--lpx) 50%;
+}
+@keyframes lpx {
+  to {
+    --lpx: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none;
+  }
   html {
     scroll-behavior: auto;
   }
