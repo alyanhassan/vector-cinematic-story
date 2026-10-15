@@ -2,12 +2,13 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 
 import { ASSETS } from "./assets";
+import { COPY, sectionLabel } from "./content";
 import { TechLabel } from "./primitives";
 
 const ZONES = [
-  { label: "TEXTURED MESH", top: "26%", left: "18%", w: "16%" },
-  { label: "STRUCTURAL LACING", top: "48%", left: "58%", w: "20%" },
-  { label: "SCULPTED BASE", top: "76%", left: "30%", w: "14%" },
+  { label: COPY.craft.zones[0], top: "26%", left: "18%", w: "16%" },
+  { label: COPY.craft.zones[1], top: "48%", left: "58%", w: "20%" },
+  { label: COPY.craft.zones[2], top: "76%", left: "30%", w: "14%" },
 ];
 
 export function Material() {
@@ -22,15 +23,17 @@ export function Material() {
   return (
     <section
       ref={ref}
+      id="craft"
       className="relative h-[110svh] overflow-hidden bg-background md:h-[130svh]"
     >
       <motion.div style={{ y: reduced ? 0 : imgY }} className="absolute inset-x-0 -top-[10%] h-[120%]">
         <img
           src={ASSETS.detail}
-          alt="Macro detail of textured mesh, lacing and stitching on a cream sneaker"
+          alt={COPY.craft.alt}
           width={1536}
           height={1024}
           loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover object-center"
         />
       </motion.div>
@@ -59,11 +62,12 @@ export function Material() {
       </div>
 
       <div className="pointer-events-none absolute inset-x-0 bottom-0 mx-auto max-w-[1800px] px-5 pb-10 md:px-10 md:pb-16">
-        <TechLabel className="opacity-100">MATERIAL STUDY / 02</TechLabel>
+        <TechLabel className="opacity-100">{sectionLabel("craft")}</TechLabel>
         <h2 className="display mt-4 text-[20vw] leading-[0.8] md:text-[13vw]">
-          <span className="block">FORM</span>
-          <span className="block outline-type text-right">FUNCTION</span>
+          <span className="block">{COPY.craft.words[0]}</span>
+          <span className="block outline-type text-right">{COPY.craft.words[1]}</span>
         </h2>
+        <p className="mt-6 text-right text-sm">{COPY.craft.note}</p>
       </div>
     </section>
   );

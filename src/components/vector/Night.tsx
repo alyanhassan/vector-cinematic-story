@@ -2,6 +2,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion
 import { useRef } from "react";
 
 import { ASSETS } from "./assets";
+import { BRAND, COPY, sectionLabel } from "./content";
 import { TechLabel } from "./primitives";
 
 export function Night() {
@@ -17,7 +18,7 @@ export function Night() {
   return (
     <section
       ref={ref}
-      id="campaign"
+      id="night"
       className="dark relative h-[105svh] overflow-hidden bg-background md:h-[125svh]"
     >
       <motion.div
@@ -26,10 +27,11 @@ export function Night() {
       >
         <img
           src={ASSETS.night}
-          alt="Sneakers on wet pavement at night with blue city bokeh"
+          alt={COPY.night.alt}
           width={1536}
           height={1024}
           loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover object-center"
         />
       </motion.div>
@@ -40,10 +42,8 @@ export function Night() {
 
       <div className="absolute inset-0 mx-auto flex max-w-[1800px] flex-col justify-between px-5 py-10 text-foreground md:px-10 md:py-16">
         <div className="flex items-start justify-between">
-          <TechLabel className="opacity-90">CAMPAIGN 02 / AFTER DARK</TechLabel>
-          <TechLabel className="hidden opacity-70 md:inline">
-            SHOT ON LOCATION / 03:14
-          </TechLabel>
+          <TechLabel className="opacity-100">{sectionLabel("night")}</TechLabel>
+          <TechLabel className="hidden opacity-90 md:inline">{COPY.night.meta}</TechLabel>
         </div>
 
         <motion.h2
@@ -53,16 +53,13 @@ export function Night() {
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
           className="display text-[19vw] leading-[0.82] md:text-[14vw]"
         >
-          AFTER
-          <span className="block text-right">DARK</span>
+          {COPY.night.headline[0]}
+          <span className="block text-right">{COPY.night.headline[1]}</span>
         </motion.h2>
 
         <div className="flex items-end justify-between gap-6">
-          <p className="max-w-xs text-xs leading-relaxed text-muted-foreground">
-            The city rewrites itself after midnight. VECTOR is built for the version
-            of the street that only exists then.
-          </p>
-          <TechLabel className="opacity-90">VECTOR / 01</TechLabel>
+          <p className="max-w-xs text-xs leading-relaxed text-foreground/85">{COPY.night.body}</p>
+          <TechLabel className="opacity-100">{BRAND.wordmark}</TechLabel>
         </div>
       </div>
     </section>
