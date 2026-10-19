@@ -57,8 +57,7 @@ export function Hero() {
           style={{
             background: useTransform(
               lightPos,
-              (p) =>
-                `radial-gradient(38% 38% at ${p}, oklch(1 0.06 92 / 0.9) 0%, transparent 70%)`,
+              (p) => `radial-gradient(38% 38% at ${p}, oklch(1 0.06 92 / 0.9) 0%, transparent 70%)`,
             ),
           }}
         />

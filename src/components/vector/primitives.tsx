@@ -84,12 +84,6 @@ export function StaggerWords({
   );
 }
 
-export function TechLabel({
-  children,
-  className,
-}: {
-  children: ReactNode;
-  className?: string;
-}) {
+export function TechLabel({ children, className }: { children: ReactNode; className?: string }) {
   return <span className={cn("label-tech opacity-70", className)}>{children}</span>;
 }

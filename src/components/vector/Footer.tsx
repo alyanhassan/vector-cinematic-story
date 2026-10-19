@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 
 import { BRAND, COPY, FOOTER_LINK_IDS, SECTIONS } from "./content";
@@ -25,8 +25,9 @@ function LocalTime() {
 
 function Wordmark() {
   const reduced = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const letters = BRAND.name.split("");
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -43,26 +44,28 @@ function Wordmark() {
       aria-label={BRAND.name}
       role="img"
       className={reduced ? "" : pos ? "" : "wordmark-drift"}
-      style={{ ["--lp" as string]: pos ?? "50% 50%" }}
+      style={pos ? { ["--lp" as string]: pos } : undefined}
     >
-      <div
+      <motion.div
         aria-hidden
-        className="display flex justify-between text-[19.5vw] leading-[0.86] tracking-[-0.02em] md:text-[19vw] xl:text-[min(19vw,345px)]"
+        initial={reduced ? false : "hidden"}
+        animate={reduced || inView ? "show" : "hidden"}
+        className={`display flex justify-between text-[19.5vw] leading-[0.86] tracking-[-0.02em] md:text-[19vw] xl:text-[min(19vw,345px)] ${reduced ? "text-foreground" : "wordmark-light"}`}
       >
         {letters.map((l, i) => (
           <span key={i} className="block overflow-hidden">
             <motion.span
-              className={reduced ? "block text-foreground" : "wordmark-light block"}
-              initial={reduced ? false : { y: "100%" }}
-              whileInView={{ y: "0%" }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1, delay: i * 0.06, ease: EASE }}
+              className="block"
+              variants={{
+                hidden: { y: "100%" },
+                show: { y: "0%", transition: { duration: 1, delay: i * 0.06, ease: EASE } },
+              }}
             >
               {l}
             </motion.span>
           </span>
         ))}
-      </div>
+      </motion.div>
     </div>
   );
 }
@@ -130,7 +133,7 @@ export function Footer({ children }: { children?: ReactNode }) {
     const ro = new ResizeObserver(() => setH(el.offsetHeight));
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [curtain]);
 
   if (!curtain) {
     return (
