@@ -128,7 +128,7 @@ export function Footer({ children }: { children?: ReactNode }) {
     const ro = new ResizeObserver(() => setH(el.offsetHeight));
     ro.observe(el);
     return () => ro.disconnect();
-  }, []);
+  }, [curtain]);
 
   if (!curtain) {
     return (
