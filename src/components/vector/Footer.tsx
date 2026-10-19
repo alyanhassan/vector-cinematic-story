@@ -50,7 +50,7 @@ function Wordmark() {
         aria-hidden
         initial={reduced ? false : "hidden"}
         animate={reduced || inView ? "show" : "hidden"}
-        className={`display flex justify-between ${reduced ? "text-foreground" : "wordmark-light"}`} data-x=" text-[19.5vw] leading-[0.86] tracking-[-0.02em] md:text-[19vw] xl:text-[min(19vw,345px)]"
+        className={`display flex justify-between text-[19.5vw] leading-[0.86] tracking-[-0.02em] md:text-[19vw] xl:text-[min(19vw,345px)] ${reduced ? "text-foreground" : "wordmark-light"}`}
       >
         {letters.map((l, i) => (
           <span key={i} className="block overflow-hidden">
