@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState, type MouseEvent, type ReactNode } from "react";
 
 import { BRAND, COPY, FOOTER_LINK_IDS, SECTIONS } from "./content";
@@ -26,6 +26,8 @@ function LocalTime() {
 function Wordmark() {
   const reduced = useReducedMotion();
   const [pos, setPos] = useState<string | null>(null);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, amount: 0.2 });
   const letters = BRAND.name.split("");
 
   const onMove = (e: MouseEvent<HTMLDivElement>) => {
@@ -36,6 +38,7 @@ function Wordmark() {
 
   return (
     <div
+      ref={ref}
       onPointerMove={(e) => e.pointerType === "mouse" && onMove(e)}
       onPointerLeave={() => setPos(null)}
       aria-label={BRAND.name}
@@ -46,8 +49,7 @@ function Wordmark() {
       <motion.div
         aria-hidden
         initial={reduced ? false : "hidden"}
-        whileInView="show"
-        viewport={{ once: true, amount: 0.3 }}
+        animate={reduced || inView ? "show" : "hidden"}
         className="display flex justify-between text-[19.5vw] leading-[0.86] tracking-[-0.02em] md:text-[19vw] xl:text-[min(19vw,345px)]"
       >
         {letters.map((l, i) => (
