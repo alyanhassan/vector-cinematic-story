@@ -13,7 +13,7 @@ function useHeroPast() {
   useEffect(() => {
     const hero = document.getElementById("top");
     if (!hero) return;
-    const io = new IntersectionObserver(([e]) => setPast(!e.isIntersecting), {
+    const io = new IntersectionObserver(([e]) => e && setPast(!e.isIntersecting), {
       rootMargin: "-64px 0px 0px 0px",
       threshold: 0,
     });
@@ -85,6 +85,7 @@ export function Nav() {
       const items = Array.from(panel.querySelectorAll<HTMLElement>("a,button"));
       const first = items[0];
       const last = items[items.length - 1];
+      if (!first || !last) return;
       if (e.shiftKey && document.activeElement === first) {
         e.preventDefault();
         last.focus();

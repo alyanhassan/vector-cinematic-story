@@ -14,7 +14,7 @@ type Done = { ref: string; data: OrderInput };
 const inputCls =
   "w-full border-0 border-b border-foreground/40 bg-transparent px-0 py-3 text-lg outline-none transition-colors focus:border-foreground focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 focus-visible:ring-offset-background aria-[invalid=true]:border-destructive";
 
-function Err({ id, msg }: { id: string; msg?: string }) {
+function Err({ id, msg }: { id: string; msg?: string | undefined }) {
   if (!msg) return null;
   return (
     <p id={id} className="mt-2 text-sm text-destructive">
@@ -34,11 +34,11 @@ export function Order() {
     reset,
     setFocus,
     formState: { errors, isSubmitting },
-  } = useForm<OrderInput>({
+  } = useForm<OrderInput, unknown, OrderInput>({
     resolver: zodResolver(orderSchema),
     mode: "onBlur",
     reValidateMode: "onChange",
-    defaultValues: { name: "", email: "", size: undefined, qty: 1 },
+    defaultValues: { name: "", email: "", qty: 1 },
     shouldFocusError: false,
   });
   const qty = watch("qty");

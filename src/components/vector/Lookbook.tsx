@@ -8,7 +8,8 @@ import { cn } from "@/lib/utils";
 
 const IMAGES = [ASSETS.night, ASSETS.detail, ASSETS.motion, ASSETS.structure];
 const FRAMES = COPY.lookbook.frames.map((f, i) => ({ ...f, src: IMAGES[i] }));
-const caption = (i: number) => `${FRAMES[i].index} / ${FRAMES[i].title}`;
+const frameAt = (i: number) => FRAMES[i]!;
+const caption = (i: number) => `${frameAt(i).index} / ${frameAt(i).title}`;
 
 function Frame({
   i,
@@ -23,7 +24,7 @@ function Frame({
   imgClassName?: string;
   btnRef: (el: HTMLButtonElement | null) => void;
 }) {
-  const f = FRAMES[i];
+  const f = frameAt(i);
   return (
     <button
       ref={btnRef}
@@ -163,11 +164,11 @@ export function Lookbook() {
               <>
                 <DialogPrimitive.Title className="sr-only">{caption(open)}</DialogPrimitive.Title>
                 <DialogPrimitive.Description className="sr-only">
-                  {FRAMES[open].alt}
+                  {frameAt(open).alt}
                 </DialogPrimitive.Description>
                 <img
-                  src={FRAMES[open].src}
-                  alt={FRAMES[open].alt}
+                  src={frameAt(open).src}
+                  alt={frameAt(open).alt}
                   width={1536}
                   height={1024}
                   className="min-h-0 w-full flex-1 object-contain"
