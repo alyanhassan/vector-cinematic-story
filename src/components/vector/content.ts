@@ -31,14 +31,7 @@ export const META = {
 } as const;
 
 export type SectionId =
-  | "idea"
-  | "the-01"
-  | "craft"
-  | "city"
-  | "night"
-  | "motion"
-  | "lookbook"
-  | "order";
+  "idea" | "the-01" | "craft" | "city" | "night" | "motion" | "lookbook" | "order";
 
 export const SECTIONS: { id: SectionId; num: string; label: string }[] = [
   { id: "idea", num: "01", label: "THE IDEA" },
@@ -69,7 +62,13 @@ export const SPECS: [string, string][] = [
 
 export const COPY = {
   skip: "Skip to content",
-  nav: { order: "ORDER", menu: "MENU", close: "CLOSE", openMenu: "Open menu", closeMenu: "Close menu" },
+  nav: {
+    order: "ORDER",
+    menu: "MENU",
+    close: "CLOSE",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  },
   hero: {
     line1: "RUN",
     line2: "THE CITY.",

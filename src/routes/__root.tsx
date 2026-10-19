@@ -1,3 +1,4 @@
+import { MotionConfig } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -11,6 +12,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { BRAND, META } from "../components/vector/content";
 
 function NotFoundComponent() {
   return (
@@ -77,18 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "VECTOR / 01 — Move Different." },
+      { title: META.title },
       {
         name: "description",
-        content:
-          "VECTOR / 01 — experimental performance streetwear. System 001, engineered for motion.",
+        content: META.description,
       },
-      { name: "author", content: "VECTOR / 01" },
-      { property: "og:title", content: "VECTOR / 01 — Move Different." },
+      { name: "author", content: BRAND.wordmark },
+      { property: "og:title", content: META.title },
       {
         property: "og:description",
-        content:
-          "VECTOR / 01 — experimental performance streetwear. System 001, engineered for motion.",
+        content: META.description,
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -130,7 +130,9 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <MotionConfig reducedMotion="user">
+        <Outlet />
+      </MotionConfig>
     </QueryClientProvider>
   );
 }

@@ -25,7 +25,6 @@ function LocalTime() {
 
 function Wordmark() {
   const reduced = useReducedMotion();
-  const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState<string | null>(null);
   const letters = BRAND.name.split("");
 
@@ -37,13 +36,12 @@ function Wordmark() {
 
   return (
     <div
-      ref={ref}
       onPointerMove={(e) => e.pointerType === "mouse" && onMove(e)}
       onPointerLeave={() => setPos(null)}
       aria-label={BRAND.name}
       role="img"
       className={reduced ? "" : pos ? "" : "wordmark-drift"}
-      style={{ ["--lp" as string]: pos ?? "50% 50%" }}
+      style={pos ? { ["--lp" as string]: pos } : undefined}
     >
       <div
         aria-hidden

@@ -261,22 +261,9 @@ html.lenis body {
       transparent 70%
     ),
     var(--bone);
-  background-attachment: fixed;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-@property --lp {
-  syntax: "*";
-  inherits: true;
-}
-@keyframes drift {
-  0% {
-    --lp: 0% 50%;
-  }
-  100% {
-    --lp: 100% 50%;
-  }
 }
 @property --lpx {
   syntax: "<percentage>";

@@ -64,7 +64,8 @@ export function Lookbook() {
     lastOpened.current = i;
     setOpen(i);
   };
-  const step = (d: number) => setOpen((v) => (v === null ? v : (v + d + FRAMES.length) % FRAMES.length));
+  const step = (d: number) =>
+    setOpen((v) => (v === null ? v : (v + d + FRAMES.length) % FRAMES.length));
 
   return (
     <section id="lookbook" className="relative bg-background py-24 md:py-40">

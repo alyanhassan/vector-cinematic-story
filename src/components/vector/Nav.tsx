@@ -172,7 +172,9 @@ export function Nav() {
       <div
         className={cn(
           "fixed right-5 top-5 z-[55] mix-blend-difference transition-[transform,opacity] duration-[450ms] md:right-10",
-          past || open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0",
+          past || open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-3 opacity-0",
           open && "opacity-0",
         )}
       >

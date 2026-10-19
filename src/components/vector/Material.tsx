@@ -26,7 +26,10 @@ export function Material() {
       id="craft"
       className="relative h-[110svh] overflow-hidden bg-background md:h-[130svh]"
     >
-      <motion.div style={{ y: reduced ? 0 : imgY }} className="absolute inset-x-0 -top-[10%] h-[120%]">
+      <motion.div
+        style={{ y: reduced ? 0 : imgY }}
+        className="absolute inset-x-0 -top-[10%] h-[120%]"
+      >
         <img
           src={ASSETS.detail}
           alt={COPY.craft.alt}
